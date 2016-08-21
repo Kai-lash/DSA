@@ -12,6 +12,7 @@ public class Misc {
 		System.out.println(smallestNonconstructibleValue(list));
 		System.out.println(getBitCount(60));
 		System.out.println(getParity(60));
+		System.out.println(swapBits(73, 1, 6));
 	}
 	
 	private static int smallestNonconstructibleValue(List<Integer> list){
@@ -46,5 +47,13 @@ public class Misc {
 			number = number >>> 1;
 		}
 		return parity;
+	}
+	
+	private static int swapBits(int number, int i, int j){
+		if(((number >>> i) & 1) != ((number >>> j) & 1)){
+			int mask = (int)(Math.pow(2, i) + Math.pow(2, j));
+			number = number ^ mask;
+		}
+		return number;
 	}
 }
