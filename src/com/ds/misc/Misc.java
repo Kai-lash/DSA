@@ -10,7 +10,8 @@ public class Misc {
 		ArrayList<Integer> list = new ArrayList<>();
 		list.add(12);list.add(2);list.add(1);list.add(15);list.add(2);list.add(4);
 		System.out.println(smallestNonconstructibleValue(list));
-		System.out.println(getBitCount(16));
+		System.out.println(getBitCount(60));
+		System.out.println(getParity(60));
 	}
 	
 	private static int smallestNonconstructibleValue(List<Integer> list){
@@ -34,5 +35,16 @@ public class Misc {
 			number = number >>> 1;
 		}
 		return count;
+	}
+	
+	private static int getParity(int number){
+		int parity = 0;
+		while(number != 0){
+			if((number & 1) == 1){
+				parity = parity ^ 1;
+			}
+			number = number >>> 1;
+		}
+		return parity;
 	}
 }
