@@ -13,6 +13,7 @@ public class Misc {
 		System.out.println(getBitCount(60));
 		System.out.println(getParity(60));
 		System.out.println(swapBits(73, 1, 6));
+		System.out.println(reverseBit(2));
 	}
 	
 	private static int smallestNonconstructibleValue(List<Integer> list){
@@ -55,5 +56,15 @@ public class Misc {
 			number = number ^ mask;
 		}
 		return number;
+	}
+	
+	private static int reverseBit(int number){
+		int store = 0;
+		while(number != 0){
+			store = store << 1; //shift 1 bit to left
+			store = store | (number & 1); // AND with 1 to get the last bit of the number and | to set that bit into store
+			number = number >> 1;
+		}
+		return store;
 	}
 }
