@@ -14,6 +14,7 @@ public class Misc {
 		System.out.println(getParity(60));
 		System.out.println(swapBits(73, 1, 6));
 		System.out.println(reverseBit(2));
+		System.out.println(closestIntSameBitCount(5));
 	}
 	
 	private static int smallestNonconstructibleValue(List<Integer> list){
@@ -66,5 +67,16 @@ public class Misc {
 			number = number >> 1;
 		}
 		return store;
+	}
+	
+	private static int closestIntSameBitCount(int number){
+		int bits = 63;
+		for(int i = 0; i < bits; i++){
+			if(((number >>> i) & 1) != ((number >>> i + 1) & 1)){
+				number = number ^ ((1 << i) | (1 << (i+1)));
+				return number;
+			}
+		}
+		return number;
 	}
 }
