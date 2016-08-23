@@ -16,6 +16,7 @@ public class Misc {
 		System.out.println(reverseBit(2));
 		System.out.println(closestIntSameBitCount(5));
 		System.out.println(multiply(2, 5));
+		System.out.println(divide(15, 3));
 	}
 	
 	private static int smallestNonconstructibleValue(List<Integer> list){
@@ -110,5 +111,18 @@ public class Misc {
 			i++;
 		}
 		return result;
+	}
+	
+	private static int divide(int x, int y){
+		int quotient = 0;
+		while(x >= y){
+			int i = 0;
+			while((y << i) <= x){
+				i++;
+			}
+			quotient += (1 << (i-1));
+			x = x - (y << (i-1));
+		}
+		return quotient;
 	}
 }
