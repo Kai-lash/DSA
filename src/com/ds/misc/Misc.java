@@ -19,6 +19,7 @@ public class Misc {
 		System.out.println(divide(15, 3));
 		System.out.println(exponent(3, 4));
 		System.out.println(reverseNumber(123));
+		System.out.println(checkPalindrome(998));
 	}
 	
 	private static int smallestNonconstructibleValue(List<Integer> list){
@@ -152,5 +153,24 @@ public class Misc {
 			number /= 10;
 		}
 		return isNegative == true ? - newNumber : newNumber;
+	}
+	
+	private static boolean checkPalindrome(int number){
+		if(number < 0){
+			return false;
+		}
+		int digits = 0, msb, lsb;
+		while(number != 0){
+			digits = (int)Math.log10(number) + 1;
+			lsb = (int)number%10;
+			msb = (int)(number/Math.pow(10, digits -1));
+			if(msb == lsb){
+				number -= (int)Math.pow(10, digits -1) * msb;
+				number /= 10;
+			}else{
+				return false;
+			}
+		}
+		return true;
 	}
 }
