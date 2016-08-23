@@ -17,6 +17,7 @@ public class Misc {
 		System.out.println(closestIntSameBitCount(5));
 		System.out.println(multiply(2, 5));
 		System.out.println(divide(15, 3));
+		System.out.println(exponent(3, 4));
 	}
 	
 	private static int smallestNonconstructibleValue(List<Integer> list){
@@ -124,5 +125,20 @@ public class Misc {
 			x = x - (y << (i-1));
 		}
 		return quotient;
+	}
+	
+	private static int exponent(int x, int y){
+		int result = 1;
+		if(y < 0){
+			x = 1/x;
+		}
+		while(y != 0){
+			if((y & 1) == 1){
+				result = result * x;
+			}
+			x = x * x;
+			y = y >>> 1;
+		}
+		return result;
 	}
 }
