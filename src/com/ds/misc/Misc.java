@@ -18,6 +18,7 @@ public class Misc {
 		System.out.println(multiply(2, 5));
 		System.out.println(divide(15, 3));
 		System.out.println(exponent(3, 4));
+		System.out.println(reverseNumber(123));
 	}
 	
 	private static int smallestNonconstructibleValue(List<Integer> list){
@@ -140,5 +141,16 @@ public class Misc {
 			y = y >>> 1;
 		}
 		return result;
+	}
+	
+	private static int reverseNumber(int number){
+		boolean isNegative = number < 0 ? true : false;
+		number = Math.abs(number);
+		int newNumber = 0;
+		while(number != 0){
+			newNumber = (10 * newNumber) + (number % 10 );
+			number /= 10;
+		}
+		return isNegative == true ? - newNumber : newNumber;
 	}
 }
