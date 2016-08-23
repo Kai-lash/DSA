@@ -15,6 +15,7 @@ public class Misc {
 		System.out.println(swapBits(73, 1, 6));
 		System.out.println(reverseBit(2));
 		System.out.println(closestIntSameBitCount(5));
+		System.out.println(multiply(2, 5));
 	}
 	
 	private static int smallestNonconstructibleValue(List<Integer> list){
@@ -78,5 +79,36 @@ public class Misc {
 			}
 		}
 		return number;
+	}
+	
+	private static int multiply(int x, int y){
+		int result = 0, i = 0;
+		while(x != 0){
+			if((x & 1) == 1){
+				result = add(result, y << i);
+			}
+			x = x >>> 1;
+			i++;
+		}
+		return result;
+	}
+	
+	private static int add(int x, int y){
+		int result = 0, carry = 0, i = 0, temp = 0;
+		while((x != 0) || (y != 0) || carry == 1){
+			temp = (carry ^ (x & 1) ^ (y & 1));
+			temp <<= i;
+			result = result | temp ;
+			if((((x & 1) & (y & 1)) == 1) | (((x & 1) & carry)==1) | (((y & 1) & carry)==1)){
+				carry = 1;
+			}
+			else{
+				carry = 0;	
+			}
+			x >>>= 1;
+			y >>>= 1;
+			i++;
+		}
+		return result;
 	}
 }
