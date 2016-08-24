@@ -20,6 +20,8 @@ public class Misc {
 		System.out.println(exponent(3, 4));
 		System.out.println(reverseNumber(123));
 		System.out.println(checkPalindrome(998));
+		System.out.println(getRectIntesect(new Rectangle(1, 3, 3, 1), new Rectangle(2, 4, 1, 3)));
+		
 	}
 	
 	private static int smallestNonconstructibleValue(List<Integer> list){
@@ -172,5 +174,34 @@ public class Misc {
 			}
 		}
 		return true;
+	}
+	
+	private static Rectangle getRectIntesect(Rectangle r1, Rectangle r2){
+		if(isRectIntersect(r1, r2)){
+			return new Rectangle(Math.max(r1.x, r2.x), Math.min(r1.y, r2.y), 
+					Math.min(r1.x + r1.width, r2.x + r2.width) - Math.max(r1.x, r2.x), 
+					Math.min(r1.y + r1.height, r2.y + r2.height) - Math.min(r1.y, r2.y));
+		}else{
+			return new Rectangle(0, 0, -1, -1);
+		}
+	}
+	
+	private static boolean isRectIntersect(Rectangle r1, Rectangle r2){
+		return !(((r1.x + r1.width < r2.x) || (r2.x + r2.width < r1.x)) 
+				|| ((r1.y - r1.height > r2.y) || (r1.y < r2.y - r2.height)));
+	}
+}
+
+class Rectangle {
+	int x, y, width, height;
+	Rectangle(int x, int y, int width, int height){
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+	}
+	 
+	public String toString(){
+		return this.x + " " + this.y + " " + this.width + " " + this.height;
 	}
 }
