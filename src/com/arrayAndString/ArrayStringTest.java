@@ -16,6 +16,8 @@ public class ArrayStringTest {
 		for(int i : addOne(new int[]{9,8})){
 			System.out.print(i + " ");
 		}
+		
+		System.out.println(checkrangeEnd(new int[]{3,3,1,0,2,0,1}));
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -74,5 +76,20 @@ public class ArrayStringTest {
 			array = newArray;
 		}
 		return array;
+	}
+	
+	private static boolean checkrangeEnd(int[] array){
+		int range = 0, reach = 0;
+		for(int i = 0; i < array.length; i++){
+			if(array[i] > range){
+				range = range + array[i] - 1;
+				reach += range;
+			}
+			if(reach >= array.length - 1){
+				return true;
+			}
+			range--;
+		}
+		return false;
 	}
 }
