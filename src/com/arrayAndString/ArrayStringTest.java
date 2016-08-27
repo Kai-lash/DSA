@@ -25,6 +25,7 @@ public class ArrayStringTest {
 		findRepeatWithArray(test);
 		String str = "Battle of the Vowels: Hawaii vs. Grozny", remove="aeiou";
 		System.out.println(removeChars(str, remove));
+		System.out.println(reverseWord(str));
 		
 	}
 	
@@ -148,5 +149,18 @@ public class ArrayStringTest {
 			}
 		}
 		return new String(strArr, 0, i);
+	}
+	
+	static String reverseWord(String str){
+		char[] strArr = str.toCharArray();
+		String word = "", rev = "";
+		for(char c: strArr){
+			word += c;
+			if(c == ' '){
+				rev = word + rev;
+				word = "";
+			}
+		}
+		return word + " " + rev;
 	}
 }
