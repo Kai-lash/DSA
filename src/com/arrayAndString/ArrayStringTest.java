@@ -22,6 +22,8 @@ public class ArrayStringTest {
 		System.out.println(checkrangeEnd(new int[]{3,3,1,0,2,0,1}));
 		String test = "total";
 		findRepeatWithHT(test);
+		findRepeatWithArray(test);
+		
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -111,6 +113,20 @@ public class ArrayStringTest {
 		for(char c : arr){
 			if(hm.get(c)==1){
 				System.out.println(c);
+				break;
+			}
+		}
+	}
+	
+	static void findRepeatWithArray(String str){
+		char[] arr = str.toCharArray();
+		int[] freq = new int[128];
+		for(int i=0;i<arr.length;i++){
+			freq[(int)arr[i]] +=1;
+		}
+		for(int i=0;i<arr.length;i++){
+			if(freq[arr[i]]==1){
+				System.out.println((char)arr[i]);
 				break;
 			}
 		}
