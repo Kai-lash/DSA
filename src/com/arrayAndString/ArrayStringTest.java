@@ -26,6 +26,7 @@ public class ArrayStringTest {
 		String str = "Battle of the Vowels: Hawaii vs. Grozny", remove="aeiou";
 		System.out.println(removeChars(str, remove));
 		System.out.println(reverseWord(str));
+		System.out.println(toInt("-567"));
 		
 	}
 	
@@ -162,5 +163,23 @@ public class ArrayStringTest {
 			}
 		}
 		return word + " " + rev;
+	}
+	
+	static int toInt(String str){
+		char[] strArr = str.toCharArray();
+		boolean isNegative = false;
+		int number=0;
+		for(char c : strArr){
+			if(c == '-'){
+				isNegative =  true;
+			}else{
+				number = (c - '0') + number*10;
+			}
+		}
+		if(isNegative){
+			return -number;
+		}else{
+			return number;
+		}
 	}
 }
