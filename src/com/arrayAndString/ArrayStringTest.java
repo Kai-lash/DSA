@@ -23,6 +23,8 @@ public class ArrayStringTest {
 		String test = "total";
 		findRepeatWithHT(test);
 		findRepeatWithArray(test);
+		String str = "Battle of the Vowels: Hawaii vs. Grozny", remove="aeiou";
+		System.out.println(removeChars(str, remove));
 		
 	}
 	
@@ -130,5 +132,21 @@ public class ArrayStringTest {
 				break;
 			}
 		}
+	}
+	
+	static String removeChars( String str, String remove ){
+		char[] strArr =  str.toCharArray();
+		char[] remArr = remove.toCharArray();
+		int i=0;
+		boolean[] charMap = new boolean[128];
+		for(char c : remArr){
+			charMap[c] = true;
+		}
+		for(char c: strArr){
+			if(!charMap[c]){
+				strArr[i++] = c;
+			}
+		}
+		return new String(strArr, 0, i);
 	}
 }
