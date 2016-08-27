@@ -1,5 +1,7 @@
 package com.arrayAndString;
 
+import java.util.HashMap;
+
 public class ArrayStringTest {
 
 	public static void main(String[] args) {
@@ -18,6 +20,8 @@ public class ArrayStringTest {
 		}
 		
 		System.out.println(checkrangeEnd(new int[]{3,3,1,0,2,0,1}));
+		String test = "total";
+		findRepeatWithHT(test);
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -91,5 +95,24 @@ public class ArrayStringTest {
 			range--;
 		}
 		return false;
+	}
+	
+	static void findRepeatWithHT(String str){
+		char[] arr = str.toCharArray();
+		HashMap<Character, Integer> hm = new HashMap<>(); 
+		for(char c : arr){
+			if(hm.containsKey(c)){
+				int newCount = hm.get(c);
+				hm.put(c, newCount + 1);
+			}else{
+				hm.put(c,1);
+			}
+		}
+		for(char c : arr){
+			if(hm.get(c)==1){
+				System.out.println(c);
+				break;
+			}
+		}
 	}
 }
