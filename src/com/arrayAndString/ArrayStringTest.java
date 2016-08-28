@@ -27,7 +27,7 @@ public class ArrayStringTest {
 		System.out.println(removeChars(str, remove));
 		System.out.println(reverseWord(str));
 		System.out.println(toInt("-567"));
-		
+		System.out.println(isUnique("Kailash"));
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -181,5 +181,16 @@ public class ArrayStringTest {
 		}else{
 			return number;
 		}
+	}
+	
+	private static boolean isUnique(String s){
+		boolean[] map = new boolean[256];
+		for(char c : s.toCharArray()){
+			if(map[(int)c]){
+				return false;
+			}
+			map[(int)c] = true;
+		}
+		return true;
 	}
 }
