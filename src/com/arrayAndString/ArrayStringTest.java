@@ -30,6 +30,7 @@ public class ArrayStringTest {
 		System.out.println(isUnique("Kailash"));
 		System.out.println(isPermute("abc", "bca"));
 		System.out.println(URLify("Mr John Smith    ", 13));
+		System.out.println(checkPermutePalin("kabab"));
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -234,5 +235,22 @@ public class ArrayStringTest {
 			}
 		}
 		return URL;
+	}
+	
+	private static boolean checkPermutePalin(String s){
+		int[] map = new int[256];
+		int oddCharCount = 0;
+		for(char c : s.toCharArray()){
+			map[(int)c] = map[(int)c] + 1;
+		}
+		for(int i = 0; i < map.length; i++){
+			if(map[i]>0 && map[i]%2!=0){
+				oddCharCount++;
+			}
+		}
+		if(oddCharCount > 1){
+			return false;
+		}
+		return true;
 	}
 }
