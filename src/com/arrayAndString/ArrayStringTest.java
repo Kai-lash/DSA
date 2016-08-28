@@ -29,6 +29,7 @@ public class ArrayStringTest {
 		System.out.println(toInt("-567"));
 		System.out.println(isUnique("Kailash"));
 		System.out.println(isPermute("abc", "bca"));
+		System.out.println(URLify("Mr John Smith    ", 13));
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -210,5 +211,28 @@ public class ArrayStringTest {
 			}
 			return true;
 		}
+	}
+	
+	private static char[] URLify(String s, int trueCount){
+		int spaceCount = 0;
+		char[] URL = s.toCharArray();
+		for(int i = 0; i < trueCount; i++){
+			if(URL[i] == ' '){
+				spaceCount++;
+			}
+		}
+		int index = trueCount + 2*spaceCount;
+		for(int i = trueCount - 1; i >= 0; i--){
+			if(URL[i] == ' '){
+				URL[index - 1] = '0';
+				URL[index - 2] = '2';
+				URL[index - 3] = '%';
+				index -= 3;
+			}else{
+				URL[index - 1] = URL[i];
+				index--;
+			}
+		}
+		return URL;
 	}
 }
