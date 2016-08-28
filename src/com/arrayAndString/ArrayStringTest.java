@@ -28,6 +28,7 @@ public class ArrayStringTest {
 		System.out.println(reverseWord(str));
 		System.out.println(toInt("-567"));
 		System.out.println(isUnique("Kailash"));
+		System.out.println(isPermute("abc", "bca"));
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -192,5 +193,22 @@ public class ArrayStringTest {
 			map[(int)c] = true;
 		}
 		return true;
+	}
+	
+	private static boolean isPermute(String s1, String s2){
+		boolean[] map = new boolean[256];
+		if(s1.length() != s2.length()){
+			return false;
+		}else{
+			for(char c : s1.toCharArray()){
+				map[(int)c] = true;
+			}
+			for(char c : s2.toCharArray()){
+				if(!map[(int)c]){
+					return false;
+				}
+			}
+			return true;
+		}
 	}
 }
