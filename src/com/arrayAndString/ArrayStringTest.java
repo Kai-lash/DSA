@@ -32,6 +32,9 @@ public class ArrayStringTest {
 		System.out.println(URLify("Mr John Smith    ", 13));
 		System.out.println(checkPermutePalin("kabab"));
 		System.out.println(checkOneEditAway("pale","ples"));
+		String testInp = "aabcccccaaa";
+		String compString = getCompressedString(testInp);
+		System.out.println(compString.length() > testInp.length() ? testInp:compString);
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -273,5 +276,21 @@ public class ArrayStringTest {
 			index2++;
 		}
 		return edits>1?false:true;
+	}
+	
+	private static String getCompressedString(String s){
+		int charCount = 1;
+		StringBuilder compString = new StringBuilder();
+		for(int i = 0, j = 1; i < s.toCharArray().length && j < s.toCharArray().length; i++, j++){
+			if(s.charAt(i) == s.charAt(j)){
+				charCount++;
+			}
+			if((s.charAt(i) != s.charAt(j)) || (i == s.toCharArray().length - 2)){
+				compString.append(s.charAt(i));
+				compString.append(charCount);
+				charCount = 1;
+			}
+		}
+		return compString.toString();
 	}
 }
