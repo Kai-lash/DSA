@@ -31,6 +31,7 @@ public class ArrayStringTest {
 		System.out.println(isPermute("abc", "bca"));
 		System.out.println(URLify("Mr John Smith    ", 13));
 		System.out.println(checkPermutePalin("kabab"));
+		System.out.println(checkOneEditAway("pale","ples"));
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -252,5 +253,25 @@ public class ArrayStringTest {
 			return false;
 		}
 		return true;
+	}
+	
+	private static boolean checkOneEditAway(String s1, String s2){
+		int index1 = 0, index2 = 0, edits = 0;
+		if(s2.length() > s1.length()){
+			String temp = s2;
+			s2 = s1;
+			s1 = temp;
+		}
+		while(index1 < s1.length() && index2 < s2.length()){
+			if(s1.charAt(index1) != s2.charAt(index2)){
+				edits++;
+				if(s1.length() != s2.length()){
+					index1++;
+				}
+			}
+			index1++;
+			index2++;
+		}
+		return edits>1?false:true;
 	}
 }
