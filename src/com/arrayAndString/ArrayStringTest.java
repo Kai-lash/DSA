@@ -35,6 +35,7 @@ public class ArrayStringTest {
 		String testInp = "aabcccccaaa";
 		String compString = getCompressedString(testInp);
 		System.out.println(compString.length() > testInp.length() ? testInp:compString);
+		rotateMatrix(new int[][]{{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}}, 4);
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -292,5 +293,36 @@ public class ArrayStringTest {
 			}
 		}
 		return compString.toString();
+	}
+	
+	private static void rotateMatrix(int[][] matrix, int N){
+		int[][] buffer =  new int[1][4];
+		StringBuilder mat = new StringBuilder();
+		
+		for(int i = 0; i < N; i++){
+			for(int j = 0; j < N; j++){
+				mat.append(matrix[i][j] + " ");
+			}
+			mat.append("\n");
+		}
+		System.out.println(mat);
+		mat = new StringBuilder();
+		
+		for(int i = 0; i < N/2; i++){
+			for(int j = i; j < N - i - 1; j++){
+				buffer[0][j] = matrix[j][N-i-1];
+				matrix[j][N-i-1] = matrix[i][j];
+				matrix[i][j] = matrix[N-j-1][i];
+				matrix[N-j-1][i] = matrix[N-i-1][N-j-1];
+				matrix[N-i-1][N-j-1] = buffer[0][j];
+			}
+		}
+		for(int i = 0; i < N; i++){
+			for(int j = 0; j < N; j++){
+				mat.append(matrix[i][j] + " ");
+			}
+			mat.append("\n");
+		}
+		System.out.println(mat);
 	}
 }
