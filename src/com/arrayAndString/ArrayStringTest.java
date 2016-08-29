@@ -36,6 +36,7 @@ public class ArrayStringTest {
 		String compString = getCompressedString(testInp);
 		System.out.println(compString.length() > testInp.length() ? testInp:compString);
 		rotateMatrix(new int[][]{{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}}, 4);
+		zeroMatrix(new int[][]{{0,2,3},{4,5,6},{7,8,9}});
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -319,6 +320,53 @@ public class ArrayStringTest {
 		}
 		for(int i = 0; i < N; i++){
 			for(int j = 0; j < N; j++){
+				mat.append(matrix[i][j] + " ");
+			}
+			mat.append("\n");
+		}
+		System.out.println(mat);
+	}
+	
+	private static void zeroMatrix(int[][] matrix){
+		StringBuilder mat = new StringBuilder();
+		
+		for(int i = 0; i < matrix.length; i++){
+			for(int j = 0; j < matrix[0].length; j++){
+				mat.append(matrix[i][j] + " ");
+			}
+			mat.append("\n");
+		}
+		System.out.println(mat);
+		mat = new StringBuilder();
+		boolean[] zeroRows = new boolean[matrix.length];
+		boolean[] zeroCols = new boolean[matrix[0].length];
+		for(int i = 0; i < matrix.length; i++){
+			for(int j = 0; j < matrix[0].length; j++){
+				if(matrix[i][j] == 0){
+					zeroRows[i] = true;
+					zeroCols[j] = true;
+				}
+			}
+		}
+		
+		for(int i = 0; i < zeroRows.length; i++){
+			if(zeroRows[i]){
+				for(int j = 0; j < matrix[0].length; j++){
+					matrix[i][j] = 0;
+				}
+			}
+		}
+		
+		for(int i = 0; i < zeroCols.length; i++){
+			if(zeroCols[i]){
+				for(int j = 0; j < matrix.length; j++){
+					matrix[j][i] = 0;
+				}
+			}
+		}
+		
+		for(int i = 0; i < matrix.length; i++){
+			for(int j = 0; j < matrix[0].length; j++){
 				mat.append(matrix[i][j] + " ");
 			}
 			mat.append("\n");
