@@ -37,6 +37,11 @@ public class ArrayStringTest {
 		System.out.println(compString.length() > testInp.length() ? testInp:compString);
 		rotateMatrix(new int[][]{{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}}, 4);
 		zeroMatrix(new int[][]{{0,2,3},{4,5,6},{7,8,9}});
+		
+		System.out.println();
+		for(int i : deleteDuplicates(new int[]{1,2})){
+			System.out.print(i + " ");
+		}
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -372,5 +377,22 @@ public class ArrayStringTest {
 			mat.append("\n");
 		}
 		System.out.println(mat);
+	}
+	
+	private static int[] deleteDuplicates(int[] array){
+		int a = 0, b = 1;
+		while(a < array.length && b < array.length ){
+			if(array[a] >= array[b] && array[a]!=0){
+				array[b] = 0;
+			}else if(array[a+1] == 0) {
+				array[a+1] = array[b];
+				array[b] = 0;
+				a++;
+			}else{
+				a++;
+			}
+			b++;
+		}
+		return array;
 	}
 }
