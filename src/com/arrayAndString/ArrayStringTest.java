@@ -51,6 +51,10 @@ public class ArrayStringTest {
 		for(int i : generatePrime(11)){
 			System.out.print(i + " ");
 		}
+		System.out.println();
+		for(char i : applyPermutation(new int[]{3,2,1,0}, new char[]{'a','b','c','d'})){
+			System.out.print(i + " ");
+		}
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -453,5 +457,21 @@ public class ArrayStringTest {
 			}
 		}
 		return primes;
+	}
+	
+	private static char[] applyPermutation(int[] perm, char[] array){
+		char temp = ' ';
+		for(int i = 0; i < array.length; i++){
+			int next = i;
+			while(perm[next] >=0){
+				temp = array[perm[next]];
+				array[perm[next]] = array[i];
+				array[i] = temp;
+				int a = perm[next];
+				perm[next] = -1;
+				next = a;
+			}
+		}
+		return array;
 	}
 }
