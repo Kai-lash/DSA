@@ -39,9 +39,11 @@ public class ArrayStringTest {
 		zeroMatrix(new int[][]{{0,2,3},{4,5,6},{7,8,9}});
 		
 		System.out.println();
-		for(int i : deleteDuplicates(new int[]{1,2})){
+		for(int i : deleteDuplicates(new int[]{1,1,1,2})){
 			System.out.print(i + " ");
 		}
+		System.out.println();
+		System.out.println(computeMaxProfit(new int[]{310,315,275,295,260,270,290,230,255,250}));
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -394,5 +396,18 @@ public class ArrayStringTest {
 			b++;
 		}
 		return array;
+	}
+	
+	private static int computeMaxProfit(int[] array){
+		int min = Integer.MAX_VALUE, profit = 0;
+		for(int i = 0; i < array.length; i++){
+			if(array[i] < min){
+				min = array[i];
+			}
+			if(profit < (array[i]-min)){
+				profit = array[i]-min;
+			}
+		}
+		return profit;
 	}
 }
