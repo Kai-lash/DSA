@@ -44,6 +44,7 @@ public class ArrayStringTest {
 		}
 		System.out.println();
 		System.out.println(computeMaxProfit(new int[]{310,315,275,295,260,270,290,230,255,250}));
+		System.out.println(computeMaxProfitBuySellTwice(new int[]{12,11,13,9,12,8,14,13,15}));
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -409,5 +410,25 @@ public class ArrayStringTest {
 			}
 		}
 		return profit;
+	}
+	
+	private static int computeMaxProfitBuySellTwice(int[] array){
+		int min = Integer.MAX_VALUE, profit = 0, maxProfit = 0;
+		int[] firstProfit = new int[array.length];
+		for(int i = 0; i < array.length; i++){
+			if(array[i] < min){
+				min = array[i];
+			}
+			if(profit <= (array[i]-min)){
+				profit = array[i]-min;
+				firstProfit[i] = profit;
+			}
+		}
+		int max = Integer.MIN_VALUE;
+		for(int i = array.length - 1; i > 0; i--){
+			max = Math.max(max, array[i]);
+			maxProfit = Math.max(maxProfit, max - array[i] + firstProfit[i-1]);
+		}
+		return maxProfit;
 	}
 }
