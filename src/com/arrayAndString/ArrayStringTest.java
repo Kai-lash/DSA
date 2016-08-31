@@ -1,5 +1,6 @@
 package com.arrayAndString;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class ArrayStringTest {
@@ -45,6 +46,11 @@ public class ArrayStringTest {
 		System.out.println();
 		System.out.println(computeMaxProfit(new int[]{310,315,275,295,260,270,290,230,255,250}));
 		System.out.println(computeMaxProfitBuySellTwice(new int[]{12,11,13,9,12,8,14,13,15}));
+		
+		System.out.println();
+		for(int i : generatePrime(11)){
+			System.out.print(i + " ");
+		}
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -430,5 +436,22 @@ public class ArrayStringTest {
 			maxProfit = Math.max(maxProfit, max - array[i] + firstProfit[i-1]);
 		}
 		return maxProfit;
+	}
+	
+	private static int[] generatePrime(int n){
+		boolean[] isPrime = new boolean[n+1];
+		Arrays.fill(isPrime, true);
+		int[] primes = new int[n+1];
+		for(int i = 2; i <= n; i++){
+			if(isPrime[i]){
+				primes[i] = i;
+			}
+			for(int j = i; j <= n; j++){
+				if(j%i == 0){
+					isPrime[j] = false; 
+				}
+			}
+		}
+		return primes;
 	}
 }
