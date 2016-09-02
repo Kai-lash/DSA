@@ -59,6 +59,7 @@ public class ArrayStringTest {
 		for(int i : randomSampling(new int[]{1,2,3,4,5,6,7,8,9,0}, 3)){
 			System.out.print(i + " ");
 		}
+		System.out.println(reverseVowels("hello"));
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -489,4 +490,29 @@ public class ArrayStringTest {
 		}
 		return array;
 	}
+	
+	public static String reverseVowels(String s) {
+        StringBuilder sb = new StringBuilder(s);
+        char char1 = ' ', char2 = ' ';
+        for(int i = 0, j = sb.length() - 1; i < j;){
+        	boolean isVowel = true;
+            char1 = sb.charAt(i);
+            char2 = sb.charAt(j);
+            if(!(char1 == 'a' || char1 == 'e' || char1 == 'i' || char1 == 'o' || char1 == 'u')){
+            	i++;
+            	isVowel = false;
+            }
+            if(!(char2 == 'a' || char2 == 'e' || char2 == 'i' || char2 == 'o' || char2 == 'u')){
+            	j--;
+            	isVowel = false;
+            }
+            if(isVowel){
+            	sb.setCharAt(i, char2);
+                sb.setCharAt(j, char1);
+                i++;
+                j--;
+            }
+        }
+        return sb.toString();
+    }
 }
