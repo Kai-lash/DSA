@@ -60,6 +60,7 @@ public class ArrayStringTest {
 			System.out.print(i + " ");
 		}
 		System.out.println(reverseVowels("hello"));
+		System.out.println(removeElement(new int[]{1,2,3,4}, 1));
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -514,5 +515,23 @@ public class ArrayStringTest {
             }
         }
         return sb.toString();
+    }
+	public static int removeElement(int[] nums, int val) {
+        int count = nums.length, temp = 0;
+        for(int i = 0; i < nums.length; i++){
+        	if(nums[i] == val){
+        		count--;
+        	}
+        }
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] == val){
+                int j = i;
+                while(j < nums.length - 1 && nums[i] == nums[j]){j++;};
+                temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+            }
+        }
+        return count;
     }
 }
