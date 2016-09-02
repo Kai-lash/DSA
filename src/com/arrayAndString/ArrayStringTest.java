@@ -55,6 +55,10 @@ public class ArrayStringTest {
 		for(char i : applyPermutation(new int[]{3,2,1,0}, new char[]{'a','b','c','d'})){
 			System.out.print(i + " ");
 		}
+		System.out.println();
+		for(int i : randomSampling(new int[]{1,2,3,4,5,6,7,8,9,0}, 3)){
+			System.out.print(i + " ");
+		}
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -471,6 +475,17 @@ public class ArrayStringTest {
 				perm[next] = -1;
 				next = a;
 			}
+		}
+		return array;
+	}
+	
+	private static int[] randomSampling(int[] array, int k){
+		int temp = 0;
+		for(int i = 0; i < k; i++){
+			int n = (int)(Math.random()*10);
+			temp = array[n];
+			array[n] = array[i];
+			array[i] = temp;
 		}
 		return array;
 	}
