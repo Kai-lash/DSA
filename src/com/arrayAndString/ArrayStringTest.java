@@ -61,6 +61,7 @@ public class ArrayStringTest {
 		}
 		System.out.println(reverseVowels("hello"));
 		System.out.println(removeElement(new int[]{1,2,3,4}, 1));
+		System.out.println(trailingZeroes(1808548329));
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -534,4 +535,14 @@ public class ArrayStringTest {
         }
         return count;
     }
+
+	public static int trailingZeroes(int n) {
+        int zeros = 0;
+        while(n/5 >= 1){
+        	zeros += n/5;
+        	n /= 5;
+        }
+        return zeros;
+    }
+	
 }
