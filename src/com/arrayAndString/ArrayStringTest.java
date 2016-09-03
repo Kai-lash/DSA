@@ -62,6 +62,7 @@ public class ArrayStringTest {
 		System.out.println(reverseVowels("hello"));
 		System.out.println(removeElement(new int[]{1,2,3,4}, 1));
 		System.out.println(trailingZeroes(1808548329));
+		System.out.println(isPalindrome(121));
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -543,6 +544,19 @@ public class ArrayStringTest {
         	n /= 5;
         }
         return zeros;
+    }
+	
+	public static boolean isPalindrome(int x) {
+        if(x < 0){
+            return false;
+        }
+        String s = x + "";
+        for(int i = 0, j = s.length() - 1; i < j; i++, j--){
+            if(!(s.charAt(i) == s.charAt(j))){
+                return false;
+            }
+        }
+        return true;
     }
 	
 }
