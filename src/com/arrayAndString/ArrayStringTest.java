@@ -63,6 +63,7 @@ public class ArrayStringTest {
 		System.out.println(removeElement(new int[]{1,2,3,4}, 1));
 		System.out.println(trailingZeroes(1808548329));
 		System.out.println(isPalindrome(121));
+		System.out.println(countAndSay(7));
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -558,5 +559,36 @@ public class ArrayStringTest {
         }
         return true;
     }
+	
+	 public static String countAndSay(int n) {
+	        
+	        StringBuilder csequence = new StringBuilder("1");
+	        StringBuilder psequence = null;
+	        if(n == 0){
+	            return "";
+	        }else if(n == 1){
+	            return csequence.toString();
+	        }
+	        csequence.append("1");
+		while (--n > 1) {
+			int count = 1;
+			psequence = csequence;
+			csequence = new StringBuilder("");
+			for (int i = 0; i < psequence.length(); i++) {
+				if (i + 1 < psequence.length()) {
+					if (psequence.charAt(i) == psequence.charAt(i + 1)) {
+						count++;
+					} else {
+						csequence.append(count + "" + psequence.charAt(i));
+						count = 1;
+					}
+				} else {
+					csequence.append(count + "" + psequence.charAt(i));
+				}
+			}
+		}
+	        
+	        return csequence.toString();
+	    }
 	
 }
