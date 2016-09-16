@@ -64,6 +64,7 @@ public class ArrayStringTest {
 		System.out.println(trailingZeroes(1808548329));
 		System.out.println(isPalindrome(121));
 		System.out.println(countAndSay(7));
+		merge(new int[]{0},0,new int[]{1},1);
 	}
 	
 	private static int[] evenOdd(int[] array){
@@ -591,4 +592,24 @@ public class ArrayStringTest {
 	        return csequence.toString();
 	    }
 	
+	public static void merge(int[] nums1, int m, int[] nums2, int n) {
+		int i = 0, j = 0;
+        while(i < m && j < n){
+	            if(nums1[i] <= nums2[j]){
+	                i++;
+	            }else{
+	                for(int k = m; k > i; k--){
+	                   nums1[k] = nums1[k - 1];
+	                }
+	                nums1[i] = nums2[j];
+	                m++;
+	                j++;
+	                i++;
+	            }
+	        }
+        while(j < n){
+            nums1[m++] = nums2[j];
+            j++;
+        }
+	}
 }
